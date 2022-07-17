@@ -11,5 +11,12 @@ module.exports = {
   ],
   plugins: [],
   // add your custom rules here
-  rules: {},
-}
+  rules: {
+    indent: ['off'],
+    'linebreak-style': ['off', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
+    'no-unused-vars': ['off'],
+    'no-undef': ['off'],
+  }
+};

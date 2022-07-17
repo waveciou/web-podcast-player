@@ -7,21 +7,27 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'web-podcast-player',
+    title: 'Podcast Player',
     htmlAttrs: {
       lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { 'http-equiv': 'Content-Type', charset: 'text/html; charset=utf-8' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, maximum-scale=1',
+      },
+      { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' },
       { name: 'format-detection', content: 'telephone=no' },
+      { name: 'msapplication-TileColor', content: '#ffffff' },
+      { name: 'theme-color', content: '#ffffff' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/scss/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -53,4 +59,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+
+  // TailwindCSS
+  tailwindcss: {
+    prefix: 'tw-',
+  },
+};
