@@ -23,7 +23,10 @@
           const x2js = new X2JS();
           const fetchData = x2js.xml2js(data);
           console.log(fetchData);
+
+          this.$store.commit('SET_CHANNEL_LIST', fetchData.rss.channel.item);
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error);
         }
       })();
