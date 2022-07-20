@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <p>666</p>
+  <transition name="fade" mode="out-in">
     <Nuxt />
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -22,7 +21,6 @@
 
           const x2js = new X2JS();
           const fetchData = x2js.xml2js(data);
-          console.log(fetchData);
 
           this.$store.commit('SET_CHANNEL_LIST', fetchData.rss.channel.item);
         } catch (error) {

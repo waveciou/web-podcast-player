@@ -62,6 +62,11 @@ export default {
 
   // TailwindCSS
   tailwindcss: {
-    prefix: 'tw-',
+    config: {
+      prefix: 'tw-',
+      theme: {
+        extend: {},
+      },
+    },
   },
 };

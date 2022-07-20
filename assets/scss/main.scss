@@ -16,17 +16,40 @@
   // url('https://example.com/MaterialIcons-Regular.ttf') format('truetype');
 }
 
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   font-size: 16px;
   font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif, arial;
-  color: #FFF;
+  color: #000;
   background-color: #000;
   line-height: 1.6em;
   letter-spacing: 1px;
   -webkit-overflow-scrolling: touch;
   -o-overflow-scrolling: touch;
+}
+
+#__nuxt {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
+#__layout {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .fade-enter-active,
