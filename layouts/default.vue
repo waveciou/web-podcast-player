@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" mode="out-in">
-    <Nuxt />
+    <Nuxt v-if="isDataInit" />
   </transition>
 </template>
 
@@ -19,6 +19,11 @@
   }
 
   export default Vue.extend({
+    data() {
+      return {
+        isDataInit: false,
+      };
+    },
     mounted() {
       (async () => {
         try {
@@ -47,10 +52,9 @@
             (episodeItem: IOriginalData, index: number) => {
               const { title, description, pubDate, enclosure, image } =
                 episodeItem;
-              const id = index;
 
               return {
-                id,
+                id: `${index}`,
                 title,
                 description,
                 enclosure: enclosure._url,
@@ -62,6 +66,7 @@
 
           this.$store.commit('SET_DETAIL_DATA', detail);
           this.$store.commit('SET_EPISODE_DATA', episode);
+          this.isDataInit = true;
         } catch (error) {
           // eslint-disable-next-line no-console
           console.error(error);

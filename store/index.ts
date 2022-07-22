@@ -11,7 +11,7 @@ export interface IDetail {
 }
 
 export interface IEpisode {
-  id: number;
+  id: string;
   title: string;
   description: string;
   enclosure: string;
