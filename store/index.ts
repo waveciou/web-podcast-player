@@ -19,6 +19,7 @@ export interface IEpisode {
 export const state = (): {
   detail: IDetail;
   episode: IEpisode[];
+  isLoading: boolean;
 } => ({
   detail: {
     author: '',
@@ -27,6 +28,7 @@ export const state = (): {
     imgUrl: '',
   },
   episode: [],
+  isLoading: false,
 });
 
 export type RootState = ReturnType<typeof state>;
@@ -39,5 +41,9 @@ export const mutations: MutationTree<RootState> = {
   SET_EPISODE_DATA(state: RootState, payload: IEpisode[]) {
     const assignState = state;
     assignState.episode = [...payload];
+  },
+  SET_IS_LOADING(state: RootState, payload: boolean) {
+    const assignState = state;
+    assignState.isLoading = payload;
   },
 };

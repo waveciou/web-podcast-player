@@ -1,12 +1,19 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <Nuxt v-if="isDataInit" />
-  </transition>
+  <div>
+    <transition name="fade" mode="out-in">
+      <Nuxt v-if="isDataInit" />
+    </transition>
+    <Player />
+    <transition name="fade" mode="out-in">
+      <div v-if="isLoading">Loading...</div>
+    </transition>
+  </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import { IDetail, IEpisode } from '../store';
+  import Player from '../components/Player.vue';
 
   const X2JS = require('x2js');
 
@@ -19,10 +26,18 @@
   }
 
   export default Vue.extend({
+    components: {
+      Player,
+    },
     data() {
       return {
         isDataInit: false,
       };
+    },
+    computed: {
+      isLoading() {
+        return this.$store.state.isLoading;
+      },
     },
     mounted() {
       (async () => {
