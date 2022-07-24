@@ -65,6 +65,10 @@ export default {
     config: {
       prefix: 'tw-',
       theme: {
+        colors: {
+          white: '#FFFFFF',
+          black: '#333333',
+        },
         extend: {},
       },
     },

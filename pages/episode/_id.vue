@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <div>{{ index }}</div>
-    <div>{{ title }}</div>
-    <div>{{ description }}</div>
-  </div>
+  <main>
+    <figure>
+      <img :src="imgUrl" />
+    </figure>
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+  </main>
 </template>
 
 <script lang="ts">
@@ -17,6 +19,9 @@
       };
     },
     computed: {
+      imgUrl() {
+        return this.$store.state.episode[this.index]?.imgUrl || '';
+      },
       title() {
         return this.$store.state.episode[this.index]?.title || '';
       },

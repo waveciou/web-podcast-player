@@ -42,10 +42,7 @@
             author: author.__cdata,
             title,
             description,
-            image: {
-              url: image[0].url,
-              title: image[0].title,
-            },
+            imgUrl: image[0].url,
           };
 
           const episode: IEpisode[] = item.map(
@@ -59,7 +56,7 @@
                 description,
                 enclosure: enclosure._url,
                 pubDate,
-                imageUrl: image._href,
+                imgUrl: image._href,
               };
             }
           );

@@ -4,10 +4,7 @@ export interface IDetail {
   author: string;
   title: string;
   description: string;
-  image: {
-    url: string;
-    title: string;
-  };
+  imgUrl: string;
 }
 
 export interface IEpisode {
@@ -16,7 +13,7 @@ export interface IEpisode {
   description: string;
   enclosure: string;
   pubDate: string;
-  imageUrl: string;
+  imgUrl: string;
 }
 
 export const state = (): {
@@ -27,10 +24,7 @@ export const state = (): {
     author: '',
     title: '',
     description: '',
-    image: {
-      url: '',
-      title: '',
-    },
+    imgUrl: '',
   },
   episode: [],
 });

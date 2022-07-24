@@ -3,4 +3,6 @@
  * But my options was writed in nuxt.config.js file.
  */
 
-module.exports = {};
+module.exports = {
+  prefix: 'tw-',
+};
