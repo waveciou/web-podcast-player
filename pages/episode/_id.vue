@@ -1,10 +1,26 @@
 <template>
-  <main>
-    <figure>
-      <img :src="imgUrl" />
-    </figure>
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
+  <main class="tw-px-3">
+    <header class="tw-flex">
+      <nuxt-link to="/">back</nuxt-link>
+    </header>
+    <div class="tw-px-4 tw-my-5">
+      <figure
+        class="tw-w-full tw-h-0 tw-pb-100p tw-relative tw-overflow-hidden tw-object-cover tw-rounded-md"
+      >
+        <img
+          class="tw-w-full tw-h-full tw-block tw-absolute tw-top-0 tw-left-0 tw-pointer-events-none"
+          :src="imgUrl"
+          :alt="title"
+        />
+      </figure>
+    </div>
+    <div class="tw-my-6">
+      <h1 class="tw-text-2xl tw-font-bold">{{ title }}</h1>
+    </div>
+    <div class="tw-mb-5">
+      <h2 class="tw-text-xl tw-font-bold tw-mb-4">Episode Description</h2>
+      <p class="tw-text-sm tw-rounded-md">{{ description }}</p>
+    </div>
   </main>
 </template>
 

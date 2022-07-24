@@ -69,7 +69,11 @@ export default {
           white: '#FFFFFF',
           black: '#333333',
         },
-        extend: {},
+        extend: {
+          padding: {
+            '100p': '100%',
+          },
+        },
       },
     },
   },

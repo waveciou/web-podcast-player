@@ -17,10 +17,11 @@
     </div>
     <p class="tw-text-sm">{{ detail.description }}</p>
     <ul class="tw-my-5">
-      <li v-for="item in episode" :key="item.id" class="tw-my-2">
+      <li v-for="item in episode" :key="item.id" class="tw-my-3">
         <nuxt-link
           class="tw-flex tw-items-center tw-p-2 tw-bg-black tw-rounded-md"
           :to="`/episode/${item.id}`"
+          :title="item.title"
         >
           <figure
             class="tw-w-12 tw-h-12 tw-relative tw-overflow-hidden tw-object-cover tw-flex-shrink-0 tw-rounded-md"
