@@ -1,7 +1,12 @@
 <template>
   <main class="tw-px-3">
     <header class="tw-flex">
-      <nuxt-link to="/">back</nuxt-link>
+      <nuxt-link
+        to="/"
+        class="tw-w-6 tw-h-6 tw-text-center tw-block before-font-material before:tw-content-['\e2ea'] before:tw-block before:tw-m-auto before:tw-text-black"
+      >
+        back
+      </nuxt-link>
     </header>
     <div class="tw-px-4 tw-my-5">
       <figure
@@ -16,6 +21,7 @@
     </div>
     <div class="tw-my-6">
       <h1 class="tw-text-2xl tw-font-bold">{{ title }}</h1>
+      <button @click.stop="handlePlay">Play</button>
     </div>
     <div class="tw-mb-5">
       <h2 class="tw-text-xl tw-font-bold tw-mb-4">Episode Description</h2>
@@ -61,6 +67,11 @@
       if (!this.episode[this.index]) {
         this.$router.push('/');
       }
+    },
+    methods: {
+      handlePlay() {
+        this.$store.commit('SET_CURRENT_INDEX', this.index);
+      },
     },
   });
 </script>

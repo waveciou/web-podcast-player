@@ -20,6 +20,7 @@ export const state = (): {
   detail: IDetail;
   episode: IEpisode[];
   isLoading: boolean;
+  currentIndex: number;
 } => ({
   detail: {
     author: '',
@@ -29,6 +30,7 @@ export const state = (): {
   },
   episode: [],
   isLoading: false,
+  currentIndex: -1,
 });
 
 export type RootState = ReturnType<typeof state>;
@@ -45,5 +47,9 @@ export const mutations: MutationTree<RootState> = {
   SET_IS_LOADING(state: RootState, payload: boolean) {
     const assignState = state;
     assignState.isLoading = payload;
+  },
+  SET_CURRENT_INDEX(state: RootState, payload: number) {
+    const assignState = state;
+    assignState.currentIndex = payload;
   },
 };

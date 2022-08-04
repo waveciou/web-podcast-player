@@ -1,5 +1,7 @@
 <template>
-  <div>Player</div>
+  <div>
+    <audio ref="audioRef" controls :src="enclosure" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,6 +11,12 @@
     name: 'Player',
     data() {
       return {};
+    },
+    computed: {
+      enclosure() {
+        const index: number = this.$store.state.currentIndex;
+        return this.$store.state.episode[index]?.enclosure;
+      },
     },
   });
 </script>

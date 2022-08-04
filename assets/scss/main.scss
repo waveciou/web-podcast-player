@@ -64,6 +64,7 @@ body {
 
 .before-font-material::before,
 .after-font-material::after {
+  content: '';
   font-size: 24px;
   font-family: 'Material Icons', sans-serif;
   font-weight: normal;
