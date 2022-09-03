@@ -1,6 +1,11 @@
 <template>
   <div>
-    <audio ref="audioRef" controls :src="enclosure" />
+    <audio
+      ref="audioRef"
+      controls
+      :src="enclosure"
+      @canplay="handleIsCanPlay"
+    />
   </div>
 </template>
 
@@ -16,6 +21,18 @@
       enclosure() {
         const index: number = this.$store.state.currentIndex;
         return this.$store.state.episode[index]?.enclosure;
+      },
+    },
+    methods: {
+      handlePlay() {
+        const audioRef: HTMLAudioElement = this.$refs
+          .audioRef as HTMLAudioElement;
+        audioRef?.play();
+      },
+      handleIsCanPlay(event: Event) {
+        if (event) {
+          this.handlePlay();
+        }
       },
     },
   });

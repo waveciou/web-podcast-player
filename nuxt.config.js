@@ -41,8 +41,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    '@nuxt/postcss8',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,22 +57,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
-
-  // TailwindCSS
-  tailwindcss: {
-    config: {
-      prefix: 'tw-',
-      theme: {
-        colors: {
-          white: '#FFFFFF',
-          black: '#333333',
-        },
-        extend: {
-          padding: {
-            '100p': '100%',
-          },
-        },
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
       },
     },
   },

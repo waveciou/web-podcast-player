@@ -5,7 +5,7 @@
         to="/"
         class="tw-w-6 tw-h-6 tw-text-center tw-block before-font-material before:tw-content-['\e2ea'] before:tw-block before:tw-m-auto before:tw-text-black"
       >
-        back
+        <span class="tw-hidden">back</span>
       </nuxt-link>
     </header>
     <div class="tw-px-4 tw-my-5">

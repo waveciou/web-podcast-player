@@ -1,9 +1,9 @@
 <template>
   <div>
+    <Player />
     <transition name="fade" mode="out-in">
       <Nuxt v-if="isDataInit" />
     </transition>
-    <Player />
     <transition name="fade" mode="out-in">
       <div v-if="isLoading">Loading...</div>
     </transition>
