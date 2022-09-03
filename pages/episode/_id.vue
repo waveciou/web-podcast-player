@@ -1,55 +1,57 @@
 <template>
-  <main class="tw-px-3">
-    <header class="tw-flex">
-      <nuxt-link
-        to="/"
-        class="tw-w-6 tw-h-6 tw-text-center tw-block before-font-material before:tw-content-['\e2ea'] before:tw-block before:tw-m-auto before:tw-text-black"
-      >
-        <span class="tw-hidden">back</span>
-      </nuxt-link>
-    </header>
-    <div class="tw-px-4 tw-my-5">
-      <figure
-        class="tw-w-full tw-h-0 tw-pb-100p tw-relative tw-overflow-hidden tw-object-cover tw-rounded-md"
-      >
-        <img
-          class="tw-w-full tw-h-full tw-block tw-absolute tw-top-0 tw-left-0 tw-pointer-events-none"
-          :src="imgUrl"
-          :alt="title"
-        />
-      </figure>
-    </div>
-    <div class="tw-my-6">
-      <h1 class="tw-text-2xl tw-font-bold">{{ title }}</h1>
-      <div>
-        <button
-          v-if="currentIndex !== index"
-          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
-          @click.stop="handleBuildPlay"
+  <main class="tw-w-full tw-h-full tw-overflow-x-hidden tw-overflow-y-auto">
+    <div class="tw-px-3">
+      <header class="tw-flex tw-pt-2">
+        <nuxt-link
+          to="/"
+          class="tw-w-6 tw-h-6 tw-text-center tw-block before-font-material before:tw-content-['\e2ea'] before:tw-block before:tw-m-auto before:tw-text-black"
         >
-          <span class="tw-hidden">Build Play</span>
-        </button>
-
-        <button
-          v-else-if="isPlaying === false"
-          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
-          @click.stop="handlePlay"
+          <span class="tw-hidden">back</span>
+        </nuxt-link>
+      </header>
+      <div class="tw-px-4 tw-my-5">
+        <figure
+          class="tw-w-full tw-h-0 tw-pb-100p tw-relative tw-overflow-hidden tw-object-cover tw-rounded-md"
         >
-          <span class="tw-hidden">Play</span>
-        </button>
-
-        <button
-          v-else-if="isPlaying === true"
-          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1a2'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
-          @click.stop="handlePause"
-        >
-          <span class="tw-hidden">Pause</span>
-        </button>
+          <img
+            class="tw-w-full tw-h-full tw-block tw-absolute tw-top-0 tw-left-0 tw-pointer-events-none"
+            :src="imgUrl"
+            :alt="title"
+          />
+        </figure>
       </div>
-    </div>
-    <div class="tw-mb-5">
-      <h2 class="tw-text-xl tw-font-bold tw-mb-4">Episode Description</h2>
-      <p class="tw-text-sm tw-rounded-md">{{ description }}</p>
+      <div class="tw-my-6">
+        <h1 class="tw-text-2xl tw-font-bold tw-mb-2">{{ title }}</h1>
+        <div>
+          <button
+            v-if="currentIndex !== index"
+            class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
+            @click.stop="handleBuildPlay"
+          >
+            <span class="tw-hidden">Build Play</span>
+          </button>
+
+          <button
+            v-else-if="isPlaying === false"
+            class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
+            @click.stop="handlePlay"
+          >
+            <span class="tw-hidden">Play</span>
+          </button>
+
+          <button
+            v-else-if="isPlaying === true"
+            class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1a2'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
+            @click.stop="handlePause"
+          >
+            <span class="tw-hidden">Pause</span>
+          </button>
+        </div>
+      </div>
+      <div class="tw-mb-5">
+        <h2 class="tw-text-xl tw-font-bold tw-mb-4">Description</h2>
+        <p class="tw-text-sm tw-rounded-md">{{ description }}</p>
+      </div>
     </div>
   </main>
 </template>

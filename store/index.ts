@@ -24,6 +24,7 @@ export const state = (): {
   duration: number;
   currentTime: number;
   currentIndex: number;
+  homePageScrollValue: number;
 } => ({
   detail: {
     author: '',
@@ -37,6 +38,7 @@ export const state = (): {
   duration: 0,
   currentTime: 0,
   currentIndex: -1,
+  homePageScrollValue: 0,
 });
 
 export type RootState = ReturnType<typeof state>;
@@ -69,5 +71,10 @@ export const mutations: MutationTree<RootState> = {
   SET_CURRENT_INDEX(state: RootState, payload: number) {
     const assignState = state;
     assignState.currentIndex = payload;
+  },
+  SET_HOMEPAGE_SCROLL_VALUE(state: RootState, payload: number) {
+    const assignState = state;
+    const value: number = payload < 0 ? 0 : payload;
+    assignState.homePageScrollValue = value;
   },
 };

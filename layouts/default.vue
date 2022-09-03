@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="tw-w-full tw-h-full tw-overflow-hidden tw-relative">
     <audio
       ref="audioRef"
       controls
       :src="enclosure"
+      class="tw-absolute tw-invisible tw-z-0"
       @timeupdate="handleTimeUpdate"
       @canplay="handleIsCanPlay"
     />
