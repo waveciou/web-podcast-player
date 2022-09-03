@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Player />
+    <audio
+      ref="audioRef"
+      controls
+      :src="enclosure"
+      @timeupdate="handleTimeUpdate"
+      @canplay="handleIsCanPlay"
+    />
     <transition name="fade" mode="out-in">
       <Nuxt v-if="isDataInit" />
     </transition>
@@ -13,7 +19,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import { IDetail, IEpisode } from '../store';
-  import Player from '../components/Player.vue';
+  // import Player from '../components/Player.vue';
 
   const X2JS = require('x2js');
 
@@ -27,7 +33,7 @@
 
   export default Vue.extend({
     components: {
-      Player,
+      // Player,
     },
     data() {
       return {
@@ -38,6 +44,32 @@
       isLoading() {
         return this.$store.state.isLoading;
       },
+      isLastEpisode() {
+        if (
+          this.$store.state.currentIndex + 1 >=
+          this.$store.state.episode.length
+        ) {
+          return true;
+        }
+        return false;
+      },
+      enclosure() {
+        const index: number = this.$store.state.currentIndex;
+        return this.$store.state.episode[index]?.enclosure;
+      },
+    },
+    created() {
+      this.$nuxt.$on('set-build-play', (index: number) => {
+        this.$store.commit('SET_CURRENT_INDEX', index);
+      });
+
+      this.$nuxt.$on('set-play', () => {
+        this.handlePlay();
+      });
+
+      this.$nuxt.$on('set-pause', () => {
+        this.handlePause();
+      });
     },
     mounted() {
       (async () => {
@@ -84,6 +116,52 @@
           console.error(error);
         }
       })();
+    },
+    methods: {
+      handleIsCanPlay(event: Event) {
+        if (event) {
+          this.handlePlay();
+        }
+      },
+      handlePlay() {
+        const audioRef: HTMLAudioElement = this.$refs
+          .audioRef as HTMLAudioElement;
+        const audioPromise = audioRef?.play();
+
+        if (audioPromise) {
+          audioPromise
+            .then(() => {
+              this.$store.commit('SET_DURATION', audioRef?.duration);
+              this.$store.commit('SET_IS_PLAYING', true);
+            })
+            .catch((_error) => {
+              this.$store.commit('SET_IS_PLAYING', false);
+            });
+        }
+      },
+      handlePause() {
+        const audioRef: HTMLAudioElement = this.$refs
+          .audioRef as HTMLAudioElement;
+        audioRef?.pause();
+        this.$store.commit('SET_IS_PLAYING', false);
+      },
+      handleTimeUpdate() {
+        const audioRef: HTMLAudioElement = this.$refs
+          .audioRef as HTMLAudioElement;
+
+        this.$store.commit('SET_CURRENT_TIME', audioRef.currentTime);
+
+        if (audioRef.ended) {
+          this.handlePause();
+          this.$store.commit('SET_CURRENT_TIME', 0);
+          this.$store.commit('SET_DURATION', 0);
+
+          if (this.isLastEpisode === false) {
+            const nextIndex: number = this.$store.state.currentIndex + 1;
+            this.$store.commit('SET_CURRENT_INDEX', nextIndex);
+          }
+        }
+      },
     },
   });
 </script>

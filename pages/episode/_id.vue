@@ -21,7 +21,31 @@
     </div>
     <div class="tw-my-6">
       <h1 class="tw-text-2xl tw-font-bold">{{ title }}</h1>
-      <button @click.stop="handlePlay">Play</button>
+      <div>
+        <button
+          v-if="currentIndex !== index"
+          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
+          @click.stop="handleBuildPlay"
+        >
+          <span class="tw-hidden">Build Play</span>
+        </button>
+
+        <button
+          v-else-if="isPlaying === false"
+          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
+          @click.stop="handlePlay"
+        >
+          <span class="tw-hidden">Play</span>
+        </button>
+
+        <button
+          v-else-if="isPlaying === true"
+          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1a2'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
+          @click.stop="handlePause"
+        >
+          <span class="tw-hidden">Pause</span>
+        </button>
+      </div>
     </div>
     <div class="tw-mb-5">
       <h2 class="tw-text-xl tw-font-bold tw-mb-4">Episode Description</h2>
@@ -53,6 +77,12 @@
       episode() {
         return this.$store.state.episode;
       },
+      isPlaying() {
+        return this.$store.state.isPlaying;
+      },
+      currentIndex() {
+        return this.$store.state.currentIndex;
+      },
     },
     created() {
       const id: string = this.$route.params.id;
@@ -69,8 +99,14 @@
       }
     },
     methods: {
+      handleBuildPlay() {
+        this.$nuxt.$emit('set-build-play', this.index);
+      },
       handlePlay() {
-        this.$store.commit('SET_CURRENT_INDEX', this.index);
+        this.$nuxt.$emit('set-play');
+      },
+      handlePause() {
+        this.$nuxt.$emit('set-pause');
       },
     },
   });

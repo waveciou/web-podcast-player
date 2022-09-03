@@ -20,6 +20,9 @@ export const state = (): {
   detail: IDetail;
   episode: IEpisode[];
   isLoading: boolean;
+  isPlaying: boolean;
+  duration: number;
+  currentTime: number;
   currentIndex: number;
 } => ({
   detail: {
@@ -30,6 +33,9 @@ export const state = (): {
   },
   episode: [],
   isLoading: false,
+  isPlaying: false,
+  duration: 0,
+  currentTime: 0,
   currentIndex: -1,
 });
 
@@ -47,6 +53,18 @@ export const mutations: MutationTree<RootState> = {
   SET_IS_LOADING(state: RootState, payload: boolean) {
     const assignState = state;
     assignState.isLoading = payload;
+  },
+  SET_IS_PLAYING(state: RootState, payload: boolean) {
+    const assignState = state;
+    assignState.isPlaying = payload;
+  },
+  SET_DURATION(state: RootState, payload: number) {
+    const assignState = state;
+    assignState.duration = payload;
+  },
+  SET_CURRENT_TIME(state: RootState, payload: number) {
+    const assignState = state;
+    assignState.currentTime = payload;
   },
   SET_CURRENT_INDEX(state: RootState, payload: number) {
     const assignState = state;
