@@ -1,7 +1,7 @@
 <template>
   <main class="tw-w-full tw-h-full tw-overflow-x-hidden tw-overflow-y-auto">
-    <div class="tw-px-3">
-      <header class="tw-flex tw-pt-2">
+    <div class="tw-px-3 tw-pb-20">
+      <header class="tw-flex tw-pt-3">
         <nuxt-link
           to="/"
           class="tw-w-6 tw-h-6 tw-text-center tw-block before-font-material before:tw-content-['\e2ea'] before:tw-block before:tw-m-auto before:tw-text-black"
@@ -22,7 +22,7 @@
       </div>
       <div class="tw-my-6">
         <h1 class="tw-text-2xl tw-font-bold tw-mb-2">{{ title }}</h1>
-        <div>
+        <div class="">
           <button
             v-if="currentIndex !== index"
             class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"

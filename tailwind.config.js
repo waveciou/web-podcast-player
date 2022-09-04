@@ -16,6 +16,7 @@ module.exports = {
     colors: {
       white: '#FFFFFF',
       black: '#333333',
+      green: '#6DC492',
     },
     extend: {
       padding: {

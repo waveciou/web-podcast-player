@@ -4,7 +4,7 @@
     class="tw-w-full tw-h-full tw-overflow-x-hidden tw-overflow-y-auto"
     @scroll="handlePageScroll"
   >
-    <div class="tw-px-3">
+    <div class="tw-px-3 tw-pb-20">
       <div class="tw-flex tw-items-center tw-py-5">
         <figure
           class="tw-w-40 tw-h-40 tw-relative tw-overflow-hidden tw-object-cover tw-flex-shrink-0 tw-rounded-md"

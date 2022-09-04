@@ -14,13 +14,14 @@
     <transition name="fade" mode="out-in">
       <div v-if="isLoading">Loading...</div>
     </transition>
+    <Player v-if="currentIndex !== -1" />
   </div>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
   import { IDetail, IEpisode } from '../store';
-  // import Player from '../components/Player.vue';
+  import Player from '../components/Player.vue';
 
   const X2JS = require('x2js');
 
@@ -34,7 +35,7 @@
 
   export default Vue.extend({
     components: {
-      // Player,
+      Player,
     },
     data() {
       return {
@@ -53,6 +54,9 @@
           return true;
         }
         return false;
+      },
+      currentIndex() {
+        return this.$store.state.currentIndex;
       },
       enclosure() {
         const index: number = this.$store.state.currentIndex;
