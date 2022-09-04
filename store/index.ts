@@ -18,7 +18,7 @@ export const state = (): {
     imgUrl: '',
   },
   episode: [],
-  isLoading: false,
+  isLoading: true,
   isPlaying: false,
   duration: 0,
   currentTime: 0,

@@ -11,7 +11,7 @@
       <Nuxt v-if="isDataInit" />
     </transition>
     <transition name="fade" mode="out-in">
-      <div v-if="isLoading">Loading...</div>
+      <Loading v-if="isLoading" />
     </transition>
     <Player v-if="currentIndex !== -1" />
   </div>
@@ -21,12 +21,14 @@
   import Vue from 'vue';
   import { IDetail, IEpisode } from '../assets/interface/store';
   import { IOriginalData } from '../assets/interface/fetchData';
+  import Loading from '../components/Loading.vue';
   import Player from '../components/Player.vue';
 
   const X2JS = require('x2js');
 
   export default Vue.extend({
     components: {
+      Loading,
       Player,
     },
     data() {
@@ -110,7 +112,10 @@
 
           this.$store.commit('SET_DETAIL_DATA', detail);
           this.$store.commit('SET_EPISODE_DATA', episode);
+
           this.isDataInit = true;
+
+          this.$store.commit('SET_IS_LOADING', false);
         } catch (error) {
           // eslint-disable-next-line no-console
           console.error(error);
