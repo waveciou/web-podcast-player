@@ -1,20 +1,5 @@
 import { MutationTree } from 'vuex';
-
-export interface IDetail {
-  author: string;
-  title: string;
-  description: string;
-  imgUrl: string;
-}
-
-export interface IEpisode {
-  id: string;
-  title: string;
-  description: string;
-  enclosure: string;
-  pubDate: string;
-  imgUrl: string;
-}
+import { IDetail, IEpisode } from '../assets/interface/store';
 
 export const state = (): {
   detail: IDetail;

@@ -2,7 +2,6 @@
   <div class="tw-w-full tw-h-full tw-overflow-hidden tw-relative">
     <audio
       ref="audioRef"
-      controls
       :src="enclosure"
       class="tw-absolute tw-invisible tw-z-0"
       @timeupdate="handleTimeUpdate"
@@ -20,18 +19,11 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import { IDetail, IEpisode } from '../store';
+  import { IDetail, IEpisode } from '../assets/interface/store';
+  import { IOriginalData } from '../assets/interface/fetchData';
   import Player from '../components/Player.vue';
 
   const X2JS = require('x2js');
-
-  interface IOriginalData {
-    title: string;
-    description: string;
-    pubDate: string;
-    enclosure: { _url: string };
-    image: { _href: string };
-  }
 
   export default Vue.extend({
     components: {

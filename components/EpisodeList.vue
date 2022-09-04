@@ -25,7 +25,7 @@
 
 <script lang="ts">
   import Vue, { PropType } from 'vue';
-  import { IEpisode } from '../store/index';
+  import { IEpisode } from '../assets/interface/store';
 
   export default Vue.extend({
     name: 'EpisodeList',
