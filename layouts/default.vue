@@ -77,7 +77,10 @@
       });
     },
     mounted() {
-      (async () => {
+      this.handleFetchData();
+    },
+    methods: {
+      async handleFetchData() {
         try {
           const { data } = await this.$axios({
             method: 'get',
@@ -120,9 +123,7 @@
           // eslint-disable-next-line no-console
           console.error(error);
         }
-      })();
-    },
-    methods: {
+      },
       handleIsCanPlay(event: Event) {
         if (event) {
           this.handlePlay();

@@ -41,9 +41,6 @@
 
   export default Vue.extend({
     name: 'Player',
-    data() {
-      return {};
-    },
     computed: {
       currentEpisode() {
         const index: number = this.$store.state.currentIndex;
