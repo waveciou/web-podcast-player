@@ -22,30 +22,27 @@
       </div>
       <div class="tw-my-6">
         <h1 class="tw-text-2xl tw-font-bold tw-mb-2">{{ title }}</h1>
-        <div class="">
-          <button
+        <div>
+          <ButtonPlay
             v-if="currentIndex !== index"
-            class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
-            @click.stop="handleBuildPlay"
-          >
-            <span class="tw-hidden">Build Play</span>
-          </button>
+            title="Build Play"
+            color="black"
+            @set-click="handleBuildPlay"
+          />
 
-          <button
+          <ButtonPlay
             v-else-if="isPlaying === false"
-            class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
-            @click.stop="handlePlay"
-          >
-            <span class="tw-hidden">Play</span>
-          </button>
+            title="Play"
+            color="black"
+            @set-click="handlePlay"
+          />
 
-          <button
+          <ButtonPause
             v-else-if="isPlaying === true"
-            class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1a2'] before:tw-block before:tw-text-black before:tw-text-4xl before:tw-leading-8"
-            @click.stop="handlePause"
-          >
-            <span class="tw-hidden">Pause</span>
-          </button>
+            title="Pause"
+            color="black"
+            @set-click="handlePause"
+          />
         </div>
       </div>
       <div class="tw-mb-5">
@@ -58,9 +55,15 @@
 
 <script lang="ts">
   import Vue from 'vue';
+  import ButtonPlay from '../../components/ButtonPlay.vue';
+  import ButtonPause from '../../components/ButtonPause.vue';
 
   export default Vue.extend({
     name: 'EpisodePage',
+    components: {
+      ButtonPlay,
+      ButtonPause,
+    },
     data() {
       return {
         index: -1,

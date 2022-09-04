@@ -16,21 +16,19 @@
         </div>
       </div>
       <div class="tw-w-8">
-        <button
+        <ButtonPlay
           v-if="isPlaying === false"
-          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1c4'] before:tw-block before:tw-text-green before:tw-text-4xl before:tw-leading-8"
-          @click.stop="handlePlay"
-        >
-          <span class="tw-hidden">Play</span>
-        </button>
+          title="Play"
+          color="green"
+          @set-click="handlePlay"
+        />
 
-        <button
+        <ButtonPause
           v-else
-          class="tw-w-8 tw-h-8 tw-text-center tw-block before-font-material before:tw-content-['\e1a2'] before:tw-block before:tw-text-green before:tw-text-4xl before:tw-leading-8"
-          @click.stop="handlePause"
-        >
-          <span class="tw-hidden">Pause</span>
-        </button>
+          title="Pause"
+          color="green"
+          @set-click="handlePause"
+        />
       </div>
     </div>
   </div>
@@ -38,9 +36,15 @@
 
 <script lang="ts">
   import Vue from 'vue';
+  import ButtonPlay from '../components/ButtonPlay.vue';
+  import ButtonPause from '../components/ButtonPause.vue';
 
   export default Vue.extend({
     name: 'Player',
+    components: {
+      ButtonPlay,
+      ButtonPause,
+    },
     computed: {
       currentEpisode() {
         const index: number = this.$store.state.currentIndex;
